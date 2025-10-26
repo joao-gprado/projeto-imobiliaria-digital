@@ -1,61 +1,85 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Imobiliária Digital (Projeto)
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Este projeto é um site de uma imobiliária digital, desenvolvido com Laravel, Blade, Tailwind CSS e DaisyUI, pensado para oferecer uma experiência prática tanto para administradores quanto para visitantes. Ele permite cadastrar imóveis, listar anúncios em um catálogo, visualizar detalhes de cada imóvel (com galeria "lightbox") e fazer upload de imagens de forma intuitiva.
 
-## About Laravel
+# Funcionalidades Principais
+  * Painel de Admin: Sistema de autenticação (Login e Registro) com área de admin protegida.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+  * Cadastro de Imóveis (CRUD): Formulário completo para criar novos imóveis, incluindo campos de texto, números, enum (tipo, categoria) e uploads.
+  
+  * Upload de Múltiplas Imagens: Suporte para upload de uma "Imagem Principal" (capa) e uma "Galeria de Imagens" (múltiplos arquivos).
+  
+  * Catálogo de Anúncios: Página inicial pública estilizada com DaisyUI que lista todos os imóveis cadastrados em formato de "cards" de e-commerce.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+  * Página de Detalhes: Página individual para cada imóvel, mostrando todas as informações, descrição e a galeria de fotos com um modal "lightbox" (clique para ampliar).
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Como Executar o Projeto
 
-## Learning Laravel
+Siga os passos abaixo para configurar e executar o ambiente de desenvolvimento:
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+**1. Clonar o repositório**
+Clone o projeto no seu computador e entre na pasta do projeto.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+```bash
+git clone https://github.com/joao-gprado/projeto-imobiliaria-digital.git
+cd projeto-imobiliaria-digital
+```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+**2. Instalar dependências**
+Instale as dependências do PHP com `composer install` e do Node com `npm install`.
 
-## Laravel Sponsors
+**3. Configurar o ambiente**
+Copie o arquivo `.env.example` para `.env` e configure as informações do banco de dados. Depois, gere a chave da aplicação com:
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+```bash
+php artisan key:generate
+```
 
-### Premium Partners
+**4. Rodar as migrations**
+Execute `php artisan migrate` para criar as tabelas do banco de dados.
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+**5. Criar o Link de Armazenamento**
+Execute `php artisan storage:link` para criar um link de armazenamento, permitindo que as imagens que você faz upload fiquem visíveis no site.
 
-## Contributing
+**6. Executar o projeto**
+Abra dois terminais:
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+  * No Terminal 1, rode o Vite (ele vai compilar o CSS/JS e ficar "assistindo" as mudanças):
+    `npm run dev`
+  * No Terminal 2, rode o servidor do Laravel:
+    `php artisan serve`
 
-## Code of Conduct
+O site ficará disponível em `http://localhost:8000` e já estará funcional, permitindo cadastrar, listar e visualizar imóveis.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+O banco de dados começa sem usuários. Você precisa criar sua conta de administrador.
 
-## Security Vulnerabilities
+Acesse a rota de registro: `http://127.0.0.1:8000/register`
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Crie sua conta.
 
-## License
+Você será redirecionado para o Dashboard (/dashboard).
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+A partir daí, você pode usar o link "Cadastrar Imóvel" para começar a popular o site.
+
+## Tecnologias Usadas:
+
+### Backend:
+
+  * PHP
+  * Laravel
+
+### Frontend:
+
+  * Blade
+  * Tailwind CSS
+  * DaisyUI
+  * Laravel Breeze
+  * JavaScript
+
+### Banco de Dados:
+
+  * MySQL
+
+### Tooling:
+
+  * Node.js (Vite), Composer
